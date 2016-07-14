@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Monsters.Core", "src\Monsters.Core\Monsters.Core.xproj", "{848DF213-CFEE-408B-8690-F9378EED4FDA}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Monsters.Web", "src\Monsters.Web\Monsters.Web.xproj", "{206FB01C-62AF-4A6A-86FB-36B08C9A15AB}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Monsters.ModulesPoc", "src\Monsters.ModulesPoc\Monsters.ModulesPoc.xproj", "{2A0FC420-103A-4E48-B09E-5F5A6CE509D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,21 @@ Global
 		{848DF213-CFEE-408B-8690-F9378EED4FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{848DF213-CFEE-408B-8690-F9378EED4FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{848DF213-CFEE-408B-8690-F9378EED4FDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206FB01C-62AF-4A6A-86FB-36B08C9A15AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206FB01C-62AF-4A6A-86FB-36B08C9A15AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206FB01C-62AF-4A6A-86FB-36B08C9A15AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206FB01C-62AF-4A6A-86FB-36B08C9A15AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A0FC420-103A-4E48-B09E-5F5A6CE509D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0FC420-103A-4E48-B09E-5F5A6CE509D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0FC420-103A-4E48-B09E-5F5A6CE509D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0FC420-103A-4E48-B09E-5F5A6CE509D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{848DF213-CFEE-408B-8690-F9378EED4FDA} = {90F05C5B-44EA-49E4-A340-5236412C510C}
+		{206FB01C-62AF-4A6A-86FB-36B08C9A15AB} = {90F05C5B-44EA-49E4-A340-5236412C510C}
+		{2A0FC420-103A-4E48-B09E-5F5A6CE509D1} = {90F05C5B-44EA-49E4-A340-5236412C510C}
 	EndGlobalSection
 EndGlobal

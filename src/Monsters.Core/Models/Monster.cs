@@ -6,7 +6,7 @@ namespace Monsters.Core.Models.MonsterApi
     {
         public IEnumerable<MonsterApiMove> Moves { get; set; }
         public string Name { get; set; }
-        [JsonProperty(PropertyName = "national_id")]
+        //[JsonProperty(PropertyName = "national_id")]
         public int NationalId { get; set; }
     }
 }

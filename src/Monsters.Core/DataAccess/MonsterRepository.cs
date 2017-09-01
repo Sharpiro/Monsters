@@ -20,7 +20,7 @@ namespace Monsters.Core
         {
             using (var context = new MonsterContext())
             {
-                var move = context.Moves.Find(id);
+                var move = context.Moves.Single(m => m.Id == id);
                 return move;
             }
         }
@@ -43,37 +43,38 @@ namespace Monsters.Core
             }
         }
 
-        public bool AddMonsterMoveRelationship(int level, string moveName, string monsterName)
+        public void AddMonsterMoveRelationship(int level, string moveName, string monsterName)
         {
             if (moveName == null || monsterName == null || level <= 0)
-                return false;
+                throw new ArgumentException();
             using (var context = new MonsterContext())
             {
-                var monster = context.monster.FirstOrDefault(p => p.Name == monsterName);
+                var monster = context.Monsters.FirstOrDefault(p => p.Name == monsterName);
                 var move = context.Moves.FirstOrDefault(m => m.Name == moveName);
-                if (move == null || monster == null) return false;
-                var monster_move = new Monster_Moves
+                if (move == null || monster == null)
+                    throw new ArgumentException();
+                var monstermove = new MonsterMove
                 {
                     MoveId = move.MoveId,
-                    monsterId = monster.MonsterId,
+                    MonsterId = monster.MonsterId,
                     Level = level
                 };
-                context.Monster_Moves.Add(monster_move);
-                return SaveContextChanges(context);
+                context.Monster_Moves.Add(monstermove);
+                context.SaveChanges();
             }
         }
 
-        public IEnumerable<Move> GetMovesBymonster(string name)
+        public IEnumerable<Move> GetMovesByMonster(string name)
         {
             using (var context = new MonsterContext())
             {
-                var monster = context.monster.FirstOrDefault(p => p.Name == name);
+                var monster = context.Monsters.FirstOrDefault(p => p.Name == name);
                 IEnumerable<Move> data = null;
                 try
                 {
                     data = context.Monster_Moves
                         .Join(context.Moves, pm => pm.MoveId, m => m.MoveId, (pm, m) => new { PM = pm, M = m })
-                        .Where(selection => selection.PM.monsterId == monster.MonsterId).Select(final => final.M)
+                        .Where(selection => selection.PM.MonsterId == monster.MonsterId).Select(final => final.M)
                         .ToList();
                 }
                 catch (Exception)
@@ -88,8 +89,8 @@ namespace Monsters.Core
         {
             using (var context = new MonsterContext())
             {
-                var allmonster = context.monster;
-                context.monster.RemoveRange(allmonster);
+                var allmonster = context.Monsters;
+                context.Monsters.RemoveRange(allmonster);
                 context.SaveChanges();
             }
         }
@@ -107,23 +108,6 @@ namespace Monsters.Core
         {
             DeleteAllmonster();
             DeleteAllMoves();
-        }
-
-        private bool SaveContextChanges(DbContext context)
-        {
-            try
-            {
-                context.SaveChanges();
-                return true;
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error Saving changes to database");
-                Console.WriteLine(ex.InnerException.InnerException.Message);
-
-            }
-            return false;
         }
     }
 }

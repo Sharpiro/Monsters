@@ -1,0 +1,12 @@
+{
+    "version": "1.0.0",
+    "name": "asp.net",
+    "private": true,
+    "dependencies": {
+        "systemjs": "0.19.27"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-typescript": "^2.13.6"
+    }
+}
